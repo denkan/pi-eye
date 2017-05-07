@@ -1,5 +1,6 @@
 const RaspiCam = require("raspicam");
 const moment = require('moment');
+const _ = require('lodash');
 
 const defaultOptions = { 
     mode: "photo",
@@ -25,7 +26,7 @@ function run(opts) {
     const fileName = moment().format('HHmmss');
     opts.output = `./shots/${folderName}/${fileName}_%04d.jpg`;
 
-    const camera = new RaspiCam(opts);
+    const camera = new RaspiCam(raspicamOptions(opts));
 
     camera.on("start", function( err, timestamp ){
         console.log("Capture photo started at " + timestamp );
@@ -44,6 +45,23 @@ function run(opts) {
 
     camera.start();
     console.log('Capture initting done...');
+}
+
+function raspicamOptions(opts){
+    opts = opts || {};
+    const validKeys = [
+        'mode', 'm',
+        'output', 'o',
+        'encoding', 'e',
+        'width', 'w',
+        'height', 'h',
+        'quality', 'q',
+        'timeout', 't',
+        'timelapse', 'tl',
+        'thumb'
+    ];
+
+    return _.pickBy(opts, (val, key) => validKeys.indexOf(key));
 }
 
 module.exports = {
