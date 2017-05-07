@@ -9,10 +9,10 @@ const defaultOptions = {
   autorestart: false,
 
   throttle: 10000,
-  night: true,
-  sensitivty: 20,
+  night: false,
+  sensitivity: 100,
   threshold : 10,
-  sleep: 0.2, // sec
+  sleep: 0.5, // sec
 
   onReady: null,
   onDetectedMotion: null,
