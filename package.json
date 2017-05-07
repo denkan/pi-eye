@@ -19,6 +19,7 @@
   "homepage": "https://github.com/denkan/pi-eye#readme",
   "dependencies": {
     "moment": "^2.18.1",
+    "node-pi-motion": "^1.1.3",
     "raspicam": "^0.2.13"
   }
 }
