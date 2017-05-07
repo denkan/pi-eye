@@ -14,6 +14,7 @@ const defaultOptions = {
     timeout: 10000,
     timelapse: 200,
     thumb: "none",
+    nopreview: true,
 
     // image settings
     contrast: 20,
