@@ -12,7 +12,9 @@ function initDetection(){
     console.log('### initDetection()');
     CameraDetection.run({
         onDetectedMotion: initCapture,
-        onError: initDetection
+        onError: () => {
+            setTimeout(initDetection, 500);
+        }
     });
 }
 
@@ -30,7 +32,7 @@ function initCapture(){
             timeout: 1000,
             onExit: initDetection // restart detection when done capturing
         });
-    }, 200);
+    }, 500);
 }
 
 
