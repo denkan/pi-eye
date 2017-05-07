@@ -61,7 +61,7 @@ function raspicamOptions(opts){
         'thumb'
     ];
 
-    return _.pickBy(opts, (val, key) => validKeys.indexOf(key));
+    return _.pickBy(opts, (val, key) => validKeys.indexOf(key)>=0);
 }
 
 module.exports = {
