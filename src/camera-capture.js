@@ -16,9 +16,9 @@ const defaultOptions = {
     thumb: "none",
 
     // image settings
-    contrast: 10,
-    brightness: 60,
-    exposure: 'night',
+    contrast: 20,
+    brightness: 65,
+    exposure: 'auto',
 
     // custom events
     onStart: null,
