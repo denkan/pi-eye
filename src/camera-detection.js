@@ -8,7 +8,7 @@ const defaultOptions = {
   verbose: false,
   autorestart: false,
 
-  throttle: 10000,
+  throttle: 0,
   night: false,
   sensitivity: 100,
   threshold : 10,
