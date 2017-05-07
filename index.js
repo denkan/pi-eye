@@ -29,7 +29,7 @@ function initCapture(){
         // capture 
         CameraCapture.run({
             timelapse: 200,
-            timeout: 1000 //,
+            timeout: 10000 //,
             //onExit: initDetection // restart detection when done capturing
         });
     }, 500);
