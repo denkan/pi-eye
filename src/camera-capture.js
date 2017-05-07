@@ -22,7 +22,7 @@ const defaultOptions = {
 
 function run(opts) {
     opts = opts || {};
-    opts = Object.assign(opts, defaultOptions);
+    opts = Object.assign(defaultOptions, opts);
 
     const folderName = moment().format('YYMMDD');
     const fileName = moment().format('HHmmss');
@@ -47,7 +47,6 @@ function run(opts) {
 
     camera.on("exit", function( timestamp ){
         console.log("Capture photo child process has exited at " + timestamp );
-        console.log('onExit?', opts.onExit);
         opts.onExit && opts.onExit(timestamp);
     });
 
