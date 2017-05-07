@@ -18,12 +18,14 @@ function initCapture(){
     // stop detection to avoid cam collision 
     CameraDetection.camera && CameraDetection.camera.close();
 
-    // capture 
-    CameraCapture.run({
-        timelapse: 200,
-        timeout: 1000,
-        onExit: initDetection // restart detection when done capturing
-    });
+    setTimeout(() => {
+        // capture 
+        CameraCapture.run({
+            timelapse: 200,
+            timeout: 1000,
+            onExit: initDetection // restart detection when done capturing
+        });
+    }, 5000);
 }
 
 
