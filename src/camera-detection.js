@@ -10,27 +10,31 @@ const defaultOptions = {
   threshold : 10,
   sleep: 0.5, // sec
 
-  onDetectedMotion: function(){}
+  onReady: null,
+  onDetectedMotion: null,
+  onError: null
 }
 
 function run(opts){
     opts = opts || {};
     opts = Object.assign(defaultOptions, opts);
 
-    const nodePiMotion = new PiMotion(opts);
+    const camera = new PiMotion(opts);
 
-    nodePiMotion.on('ready', function(){
+    camera.on('ready', function(){
         console.log('Camera ready to detect motions');
+        opts.onReady && opts.onReady();
     });
 
-    nodePiMotion.on('DetectedMotion', function() {
+    camera.on('DetectedMotion', function() {
         console.log('Motion detected!');
         opts.onDetectedMotion && opts.onDetectedMotion();
     });
 
-    nodePiMotion.on('error', function(err){
+    camera.on('error', function(err){
         console.log('Camera detection error:');
         console.error(err);
+        opts.onError && opts.onError();
     });
 } 
 

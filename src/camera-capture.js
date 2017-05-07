@@ -10,7 +10,11 @@ const defaultOptions = {
     quality: 50,
     timeout: 10000,
     timelapse: 200,
-    thumb: "none"
+    thumb: "none",
+
+    onStart: null,
+    onRead: null,
+    onExit: null
 }
 
 function run(opts) {
@@ -24,19 +28,22 @@ function run(opts) {
     const camera = new RaspiCam(opts);
 
     camera.on("start", function( err, timestamp ){
-        console.log("photo started at " + timestamp );
+        console.log("Capture photo started at " + timestamp );
+        opts.onStart && opts.onStart(err, timestamp);
     });
 
     camera.on("read", function( err, timestamp, filename ){
-        console.log("photo image captured with filename: " + filename );
+        console.log("Capture photo image captured with filename: " + filename );
+        opts.onRead && opts.onRead(err, timestamp, filename);
     });
 
     camera.on("exit", function( timestamp ){
-        console.log("photo child process has exited at " + timestamp );
+        console.log("Capture photo child process has exited at " + timestamp );
+        opts.onExit && opts.onExit(timestamp);
     });
 
     camera.start();
-    console.log('initting done...');
+    console.log('Capture initting done...');
 }
 
 module.exports = {
