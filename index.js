@@ -31,7 +31,7 @@ function initCapture(){
             timeout: 1000,
             onExit: initDetection // restart detection when done capturing
         });
-    }, 5000);
+    }, 1000);
 }
 
 

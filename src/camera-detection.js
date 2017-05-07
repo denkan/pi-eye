@@ -1,6 +1,7 @@
 const PiMotion = require('node-pi-motion');
 
-var camera;
+var camera,
+    closing = false;
 
 const defaultOptions = {
   verbose: true,
@@ -21,24 +22,41 @@ function run(opts){
     opts = opts || {};
     opts = Object.assign(defaultOptions, opts);
 
+    closing = false;
+    
     camera = new PiMotion(opts);
 
     camera.on('ready', function(){
+        if(closing) return;
         console.log('Camera ready to detect motions');
         opts.onReady && opts.onReady();
     });
 
     camera.on('DetectedMotion', function() {
+        if(closing) return;
         console.log('Motion detected!');
         opts.onDetectedMotion && opts.onDetectedMotion();
     });
 
     camera.on('error', function(err){
+        if(closing) return;
         console.log('Camera detection error:');
         console.error(err);
         opts.onError && opts.onError();
     });
 } 
+
+function close(){
+    if(closing) return;
+    if(camera){
+        console.log('Detection closing...');
+        camera.close();
+        closing = true;
+
+    } else {
+        console.log('Detection: Nothing to close')
+    }
+}
 
 module.exports = {
     run: run,
