@@ -19,6 +19,7 @@ function initCapture(){
     console.log('### initCapture()');
 
     // stop detection to avoid cam collision 
+    console.log('Check CameraDetection.camera...', CameraDetection.camera);
     if(CameraDetection.camera){
         console.log('Shutdown detection and start capturing...');
         CameraDetection.camera.close()
