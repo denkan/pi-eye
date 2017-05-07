@@ -17,7 +17,7 @@ const defaultOptions = {
 
     // image settings
     contrast: -25,
-    brightness: 25,
+    brightness: 90,
     exposure: 'auto',
 
     // custom events
