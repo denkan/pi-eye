@@ -16,7 +16,10 @@ function initDetection(){
 
 function initCapture(){
     // stop detection to avoid cam collision 
-    CameraDetection.camera && CameraDetection.camera.close();
+    if(CameraDetection.camera){
+        console.log('Shutdown detection and start capturing...');
+        CameraDetection.camera.close()
+    } ;
 
     setTimeout(() => {
         // capture 
