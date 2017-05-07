@@ -1,7 +1,7 @@
 const RaspiCam = require("raspicam");
 const moment = require('moment');
 
-const opts = { 
+const defaultOptions = { 
     mode: "photo",
     output: "./shots/this-will-be-overwritten-with-current-date.jpg",
     encoding: "jpg",
@@ -13,7 +13,10 @@ const opts = {
     thumb: "none"
 }
 
-function init() {
+function run(opts) {
+    opts = opts || {};
+    opts = Object.assign(opts, defaultOptions);
+
     const folderName = moment().format('YYMMDD');
     const fileName = moment().format('HHmmss');
     opts.output = `./shots/${folderName}/${fileName}_%04d.jpg`;
@@ -37,5 +40,5 @@ function init() {
 }
 
 module.exports = {
-    init: init    
+    run: run
 }
