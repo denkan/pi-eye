@@ -16,7 +16,7 @@ function initDetection(){
 
 function initCapture(){
     // stop detection to avoid cam collision 
-    CameraDetection.close();
+    CameraDetection.camera && CameraDetection.camera.close();
 
     // capture 
     CameraCapture.run({

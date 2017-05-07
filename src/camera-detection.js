@@ -1,5 +1,7 @@
 const PiMotion = require('node-pi-motion');
 
+var camera;
+
 const defaultOptions = {
   verbose: true,
   autorestart: true,
@@ -19,7 +21,7 @@ function run(opts){
     opts = opts || {};
     opts = Object.assign(defaultOptions, opts);
 
-    const camera = new PiMotion(opts);
+    camera = new PiMotion(opts);
 
     camera.on('ready', function(){
         console.log('Camera ready to detect motions');
@@ -39,5 +41,6 @@ function run(opts){
 } 
 
 module.exports = {
-    run: run
+    run: run,
+    camera: camera
 }
