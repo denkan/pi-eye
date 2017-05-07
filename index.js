@@ -9,12 +9,15 @@ function start(){
 }
 
 function initDetection(){
+    console.log('### initDetection()');
     CameraDetection.run({
         onDetectedMotion: initCapture
     });
 }
 
 function initCapture(){
+    console.log('### initCapture()');
+
     // stop detection to avoid cam collision 
     if(CameraDetection.camera){
         console.log('Shutdown detection and start capturing...');

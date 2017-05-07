@@ -2,6 +2,8 @@ const RaspiCam = require("raspicam");
 const moment = require('moment');
 const _ = require('lodash');
 
+var camera;
+
 const defaultOptions = { 
     mode: "photo",
     output: "./shots/this-will-be-overwritten-with-current-date.jpg",
@@ -26,7 +28,12 @@ function run(opts) {
     const fileName = moment().format('HHmmss');
     opts.output = `./shots/${folderName}/${fileName}_%04d.jpg`;
 
-    const camera = new RaspiCam(raspicamOptions(opts));
+    if(camera){
+        console.log('Capturing already in progress...');
+        return;
+    }
+
+    camera = new RaspiCam(raspicamOptions(opts));
 
     camera.on("start", function( err, timestamp ){
         console.log("Capture photo started at " + timestamp );
@@ -57,5 +64,6 @@ function raspicamOptions(opts){
 }
 
 module.exports = {
-    run: run
+    run: run,
+    camera: camera
 }
