@@ -7,14 +7,13 @@ const opts = {
     encoding: "jpg",
     width: 640,
     height: 480,
-    quality: 90,
-    thumb: "120x90:50",
+    quality: 65,
     timeout: 10000,
     timelapse: 200
 }
 
 function init() {
-    const folderName = moment().format('YYmmDD');
+    const folderName = moment().format('YYMMDD');
     const fileName = moment().format('HHmmss');
     opts.output = `./shots/${folderName}/${fileName}_%04d.jpg`;
 
