@@ -19,19 +19,15 @@ function initCapture(){
     console.log('### initCapture()');
 
     // stop detection to avoid cam collision 
-    //if(CameraDetection.camera){
-        console.log('Shutdown detection and start capturing...');
-        CameraDetection.close();
-    //} ;
+    console.log('Shutdown detection and start capturing...');
+    CameraDetection.close();
 
-    setTimeout(() => {
-        // capture 
-        CameraCapture.run({
-            timelapse: 200,
-            timeout: 1000,
-            onExit: initDetection // restart detection when done capturing
-        });
-    }, 1000);
+    // capture 
+    CameraCapture.run({
+        timelapse: 200,
+        timeout: 1000,
+        onExit: initDetection // restart detection when done capturing
+    });
 }
 
 
