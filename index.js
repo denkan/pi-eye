@@ -29,8 +29,8 @@ function initCapture(){
         // capture 
         CameraCapture.run({
             timelapse: 200,
-            timeout: 1000,
-            onExit: initDetection // restart detection when done capturing
+            timeout: 1000 //,
+            //onExit: initDetection // restart detection when done capturing
         });
     }, 500);
 }
