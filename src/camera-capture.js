@@ -47,21 +47,13 @@ function run(opts) {
     console.log('Capture initting done...');
 }
 
+
+/**
+ * Pick options except nulls
+ */
 function raspicamOptions(opts){
     opts = opts || {};
-    const validKeys = [
-        'mode', 'm',
-        'output', 'o',
-        'encoding', 'e',
-        'width', 'w',
-        'height', 'h',
-        'quality', 'q',
-        'timeout', 't',
-        'timelapse', 'tl',
-        'thumb'
-    ];
-
-    return _.pickBy(opts, (val, key) => validKeys.indexOf(key)>=0);
+    return _.pickBy(opts, (val) => val !== null);
 }
 
 module.exports = {
