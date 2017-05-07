@@ -15,8 +15,8 @@ const opts = {
 
 function init() {
     const folderName = moment().format('YYmmDD');
-    const fileName = moment().format('HHmmss_SSS');
-    opts.output = `./shots/${folderName}/${fileName}.jpg`;
+    const fileName = moment().format('HHmmss');
+    opts.output = `./shots/${folderName}/${fileName}_%04d.jpg`;
 
     const camera = new RaspiCam(opts);
 
