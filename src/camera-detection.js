@@ -42,5 +42,7 @@ function run(opts){
 
 module.exports = {
     run: run,
-    camera: camera
+    close: () => {
+        camera && camera.close();
+    }
 }
