@@ -60,7 +60,12 @@ function run(opts) {
  */
 function raspicamOptions(opts){
     opts = opts || {};
-    return _.pickBy(opts, (val) => val !== null);
+    const excludeParams = [
+        'onStart',
+        'onRead',
+        'onExit'
+    ];
+    return _.pickBy(opts, (val,key) => excludeParams.indexOf(key)<0);
 }
 
 module.exports = {

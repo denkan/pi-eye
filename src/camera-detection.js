@@ -1,4 +1,5 @@
 const PiMotion = require('node-pi-motion');
+const _ = require('lodash');
 
 var camera,
     closing = false;
@@ -24,7 +25,7 @@ function run(opts){
 
     closing = false;
     
-    camera = new PiMotion(opts);
+    camera = new PiMotion(pimotionOptions(opts));
 
     camera.on('ready', function(){
         if(closing) return;
@@ -57,6 +58,20 @@ function close(){
         console.log('Detection: Nothing to close')
     }
 }
+
+/**
+ * Pick options except nulls
+ */
+function pimotionOptions(opts){
+    opts = opts || {};
+    const excludeParams = [
+        'onReady',
+        'onDetectedMotion',
+        'onError'
+    ];
+    return _.pickBy(opts, (val,key) => excludeParams.indexOf(key)<0);
+}
+
 
 module.exports = {
     run: run,
