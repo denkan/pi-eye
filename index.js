@@ -11,7 +11,8 @@ function start(){
 function initDetection(){
     console.log('### initDetection()');
     CameraDetection.run({
-        onDetectedMotion: initCapture
+        onDetectedMotion: initCapture,
+        onError: initDetection
     });
 }
 

@@ -48,6 +48,7 @@ function run(opts) {
     camera.on("exit", function( timestamp ){
         console.log("Capture photo child process has exited at " + timestamp );
         opts.onExit && opts.onExit(timestamp);
+        camera = null;
     });
 
     camera.start();
