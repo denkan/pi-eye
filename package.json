@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/denkan/pi-eye/issues"
   },
-  "homepage": "https://github.com/denkan/pi-eye#readme"
+  "homepage": "https://github.com/denkan/pi-eye#readme",
+  "dependencies": {
+    "raspicam": "^0.2.13"
+  }
 }
