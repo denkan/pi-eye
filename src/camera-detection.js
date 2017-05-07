@@ -4,7 +4,7 @@ var camera;
 
 const defaultOptions = {
   verbose: true,
-  autorestart: true,
+  autorestart: false,
 
   throttle: 200,
   night: false,
