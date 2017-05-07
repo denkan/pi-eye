@@ -7,9 +7,10 @@ const opts = {
     encoding: "jpg",
     width: 640,
     height: 480,
-    quality: 65,
+    quality: 50,
     timeout: 10000,
-    timelapse: 200
+    timelapse: 200,
+    thumb: "none"
 }
 
 function init() {
