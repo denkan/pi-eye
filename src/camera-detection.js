@@ -5,7 +5,7 @@ var camera,
     closing = false;
 
 const defaultOptions = {
-  verbose: true,
+  verbose: false,
   autorestart: false,
 
   throttle: 10000,

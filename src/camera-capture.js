@@ -15,6 +15,12 @@ const defaultOptions = {
     timelapse: 200,
     thumb: "none",
 
+    // image settings
+    contrast: 10,
+    brightness: 25,
+    exposure: 'night',
+
+    // custom events
     onStart: null,
     onRead: null,
     onExit: null
